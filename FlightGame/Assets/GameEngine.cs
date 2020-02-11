@@ -6,7 +6,6 @@ public class GameEngine : MonoBehaviour
 
     private void Start()
     {
-        InvokeRepeating("CreateEnemy", 1, 1.5f);
     }
 
     private void Update()
@@ -18,5 +17,15 @@ public class GameEngine : MonoBehaviour
         float randomHeight = (10.0f * Random.value) - 5;
         GameObject newEnemy = Instantiate(enemy);
         newEnemy.transform.position = new Vector2(15.0f, randomHeight);
+    }
+
+    private void Started()
+    {
+        InvokeRepeating("CreateEnemy", 0, 1.5f);
+    }
+
+    private void Ended()
+    {
+        CancelInvoke("CreateEnemy");
     }
 }
